@@ -377,6 +377,7 @@ void setup() {
   delay(100);
   servoPen.write(roboSetup.data.penUpPos);
   goHome();
+  Serial.println("ready");
 }
 
 char buf[64];

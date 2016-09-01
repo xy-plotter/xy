@@ -4,9 +4,12 @@ const sh = require('kool-shell');
 let data = null;
 let buffer = [];
 
+const WIDTH = 380;
+const HEIGHT = 310;
+
 const Plotter = {
-  data,
-  buffer,
+  data, buffer,
+  WIDTH, HEIGHT,
 
   connect(_port, _baudRate) {
     port = new serial(_port, {
@@ -21,7 +24,6 @@ const Plotter = {
       });
 
       port.on('data', (data) => {
-        sh.warning(data);
         resolve(data);
         this.processBuffer();
       });
@@ -47,7 +49,7 @@ const Plotter = {
   },
 
   addToBuffer(message, verbose = false) {
-    if (verbose) sh.info('add to buffer', message);
+    if (verbose) sh.info(`"${message}" buffered.`);
     this.buffer.push(message);
   },
 
@@ -71,6 +73,9 @@ const Plotter = {
   },
 
   move(x, y, verbose = false) {
+    if (x < 0 || x > WIDTH || y < 0 && y > HEIGHT) {
+      sh.warning('warning : position will be outside plotter\'s boundaries.')
+    }
     this.addToBuffer(`G1 X${x} Y${y}`, verbose);
     return this;
   },

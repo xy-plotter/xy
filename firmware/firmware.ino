@@ -336,7 +336,7 @@ void initRobotSetup()
     roboSetup.data.width = WIDTH;
     roboSetup.data.height = HEIGHT;
     roboSetup.data.motorSwitch = 0;
-    roboSetup.data.speed = 80;
+    roboSetup.data.speed = 100;
     roboSetup.data.penUpPos = 160;
     roboSetup.data.penDownPos = 90;
     syncRobotSetup();
@@ -382,9 +382,19 @@ void setup() {
 char buf[64];
 int8_t bufindex;
 
+// -------------------------------------------------------------------------
+
+int no_data = 0;
+boolean isAsleep = false;
+
 void loop() {
   // echoEndStop();
   if(Serial.available()){
+    if (isAsleep) {
+      no_data = 0;
+      wakeUp();
+    }
+
     char c = Serial.read();
     buf[bufindex++]=c;
     if(c=='\n'){
@@ -396,5 +406,22 @@ void loop() {
     if(bufindex>=64){
       bufindex=0;
     }
+  } else if(!isAsleep) {
+    no_data++;
+    delay(100);
+    if (no_data > 100) {
+      sleep();
+    }
   }
+}
+
+void sleep() {
+  isAsleep = true;
+  servoPen.detach();
+  Serial.print('good night !');
+}
+
+void wakeUp() {
+  isAsleep = false;
+  servoPen.attach(servopin);
 }

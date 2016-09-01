@@ -12,6 +12,8 @@ XY
 ### Installation
 
 ###### Firmware
+
+_please note that this firmware has not been tested with the official makeblock softwares_
 - download and install the [Arduino Software](https://www.arduino.cc/en/Main/Software)
 - open [./firmware/firmware.ino](https://github.com/arnaudjuracek/xy/tree/master/firmware/firmware.ino)
 - upload it to your board, making sure you've selected the right port and board (_Leonardo_ or _Uno_ depending of your configuration)

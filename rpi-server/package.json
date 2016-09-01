@@ -1,0 +1,22 @@
+{
+  "name": "rpi-server",
+  "version": "1.0.0",
+  "description": "a js server to control makeblock XY plotter v2.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cnc",
+    "plotter",
+    "raspberry",
+    "pi",
+    "makeblock",
+    "server"
+  ],
+  "author": "Arnaud Juracek <arnaud.juracek@gmail.com> (http://arnaudjuracek.fr)",
+  "license": "MIT",
+  "dependencies": {
+    "serialport": "^4.0.1"
+  }
+}

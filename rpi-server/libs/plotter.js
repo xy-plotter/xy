@@ -1,5 +1,6 @@
-const serial = require('serialport');
-const sh = require('kool-shell');
+const serial  = require('serialport');
+const sh      = require('kool-shell');
+const SVG     = require('./svg');
 
 let data = null;
 let buffer = [];
@@ -150,6 +151,26 @@ const Plotter = {
     if (this.up || force_motion) {
       this.up = false;
       this.pen(90);
+    }
+    return this;
+  },
+
+  // -------------------------------------------------------------------------
+  // SVG COMMANDS
+
+  svg(file, scale) {
+    let points = SVG(file, scale);
+    for (let i = 0; i < points.length; i++) {
+      let point = points[i];
+      if (point[0] === 'M') {
+        this
+          .pen_up()
+          .move(point[1], this.HEIGHT - point[2]);
+      } else {
+        this
+          .pen_down()
+          .move(point[0], this.HEIGHT - point[1]);
+      }
     }
     return this;
   },

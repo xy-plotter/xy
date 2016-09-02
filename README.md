@@ -8,6 +8,7 @@ XY
   - boundaries defined by the plotter's limit switches
   - pen's servo auto-sleep to prevent wear-out
 - [./server](https://github.com/arnaudjuracek/xy/tree/master/rpi-server) : node.js server
+  - SVG support
 
 ### Installation
 

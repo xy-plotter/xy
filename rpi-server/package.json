@@ -17,6 +17,12 @@
   "author": "Arnaud Juracek <arnaud.juracek@gmail.com> (http://arnaudjuracek.fr)",
   "license": "MIT",
   "dependencies": {
+    "abs-svg-path": "^0.1.1",
+    "adaptive-bezier-curve": "^1.0.3",
+    "extract-svg-path": "^2.1.0",
+    "load-svg": "^1.0.0",
+    "normalize-svg-path": "^0.1.0",
+    "parse-svg-path": "^0.1.1",
     "serialport": "^4.0.1"
   }
 }

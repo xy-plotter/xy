@@ -310,7 +310,7 @@ void parseCmd(char * cmd)
   }else if(cmd[0]=='P'){
     Serial.print("POS X");Serial.print(curX);Serial.print(" Y");Serial.println(curY);
   }
-  Serial.println("OK");
+  Serial.println("Command received.");
 }
 
 // local data

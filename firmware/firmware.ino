@@ -117,8 +117,8 @@ void doMove()
 }
 
 /******** mapping xy position to steps ******/
-#define WIDTH 380
-#define HEIGHT 310
+#define WIDTH 310
+#define HEIGHT 380
 #define STEPS_PER_MM 87.58 // the same as 3d printer
 void prepareMove()
 {

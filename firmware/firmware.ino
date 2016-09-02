@@ -134,27 +134,21 @@ void prepareMove()
   curY = tarY;
 }
 
-void goHome()
-{
+void goHome() {
   // stop on either endstop touches
-  while(digitalRead(xlimit_pin2)!=0){
-    stepperMoveA(motorAbk);
+  while (digitalRead(xlimit_pin2) != 0 || digitalRead(ylimit_pin2) != 0) {
+    if (digitalRead(xlimit_pin2) != 0) stepperMoveA(motorAbk);
+    if (digitalRead(ylimit_pin2) != 0) stepperMoveB(motorBbk);
     delayMicroseconds(stepdelay_min);
   }
-  while(digitalRead(ylimit_pin2)!=0){
-    stepperMoveB(motorBbk);
-    delayMicroseconds(stepdelay_min);
-  }
-  posA = 0;
-  posB = 0;
-  curX = 0;
-  curY = 0;
+  initPosition();
 }
 
-void initPosition()
-{
-  curX=0; curY=0;
-  posA = 0;posB = 0;
+void initPosition() {
+  curX = 0;
+  curY = 0;
+  posA = 0;
+  posB = 0;
 }
 
 /************** calculate movements ******************/

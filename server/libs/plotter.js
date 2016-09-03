@@ -159,17 +159,21 @@ module.exports = {
 
   svg(file, scale) {
     let points = SVG(file, scale);
-    for (let i = 0; i < points.length; i++) {
-      let point = points[i];
-      if (point[0] === 'M') {
-        this
+    if (points && points.length > 0) {
+      for (let i = 0; i < points.length; i++) {
+        let point = points[i];
+        if (point[0] === 'M') {
+          this
           .pen_up()
           .move(point[1], this.HEIGHT - point[2]);
-      } else {
-        this
+        } else {
+          this
           .pen_down()
           .move(point[0], this.HEIGHT - point[1]);
+        }
       }
+    } else {
+      sh.warning(`${file} doesn't contain any valid points.`);
     }
     return this;
   },

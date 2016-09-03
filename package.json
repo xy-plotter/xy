@@ -20,6 +20,7 @@
     "abs-svg-path": "^0.1.1",
     "adaptive-bezier-curve": "^1.0.3",
     "extract-svg-path": "^2.1.0",
+    "kool-shell": "github:pqml/kool-shell",
     "load-svg": "^1.0.0",
     "normalize-svg-path": "^0.1.0",
     "parse-svg-path": "^0.1.1",

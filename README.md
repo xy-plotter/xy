@@ -33,7 +33,7 @@ _please note that this firmware has not been tested with the official makeblock 
 
 ### Credits
 The Arduino firmware is based on [Michael Fogleman](https://github.com/fogleman/xy)'s one. 
-Thanks to the Python works of Michael Fogleman and Anders Hoff to allow me establish a working communication between the XY and nodejs.
+Thanks to the Python works of [Michael Fogleman](https://github.com/fogleman/xy) and [Anders Hoff](https://github.com/inconvergent/) to allow me establish a working communication between the XY and nodejs.
 
 ### License
 

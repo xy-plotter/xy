@@ -8,9 +8,7 @@ const bezier    = require('adaptive-bezier-curve');
 
 
 function sanitize(svgString) {
-  console.log(svgString);
   let extracted = extract.parse(svgString);
-  console.log(extracted);
   let parsed = parse(extracted);
   let absed = abs(parsed);
   return normalize(absed);

@@ -26,7 +26,8 @@ _please note that this firmware has not been tested with the official makeblock 
 ```
 
 ### Credits
-The arduino firmware is based on [Fogleman](https://github.com/fogleman/xy)'s one.
+The Arduino firmware is based on [Michael Fogleman](https://github.com/fogleman/xy)'s one. 
+Thanks to the Python works of Michael Fogleman and Anders Hoff to allow me establish a working communication between the XY and nodejs.
 
 ### License
 

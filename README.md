@@ -6,6 +6,7 @@ XY
 - [./firmware](https://github.com/arnaudjuracek/xy/tree/master/firmware) : custom Arduino firmware
   - boundaries defined by the plotter's limit switches
   - pen's servo auto-sleep to prevent wear-out
+  - faster _home_ command
 - [./server](https://github.com/arnaudjuracek/xy/tree/master/server) : node.js server
   - SVG support
   - [Processing-like API](https://processing.org/reference/) for 2D primitives (see [usage](#usage) below)

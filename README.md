@@ -23,7 +23,9 @@ _please note that this firmware has not been tested with the official makeblock 
 
 ###### Server
 ```sh
-
+svn export https://github.com/arnaudjuracek/xy/trunk xy
+cd xy
+npm install
 ```
 
 ### Usage

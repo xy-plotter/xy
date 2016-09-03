@@ -7,7 +7,7 @@ let buffer = [];
 const WIDTH = 310;
 const HEIGHT = 380;
 
-const Plotter = {
+module.exports = {
   data, buffer,
   WIDTH, HEIGHT,
 
@@ -28,8 +28,7 @@ const Plotter = {
       });
 
       this.port.on('data', (data) => {
-        resolve(data);
-        // sh.info(data);
+        if (!this.connected) resolve(data);
         this.processBuffer();
       });
 
@@ -230,6 +229,4 @@ const Plotter = {
   }
 
 
-}
-
-module.exports = Plotter;
+};

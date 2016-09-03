@@ -9,5 +9,6 @@ plotter
     exit(1);
   });
 
-plotter.svg('./hello.svg', 1);
+// plotter.svg('./svg/hello.svg', 1);
+plotter.line(0, 0, plotter.WIDTH / 2, plotter.HEIGHT / 2);
 plotter.end(() => plotter.disconnect());

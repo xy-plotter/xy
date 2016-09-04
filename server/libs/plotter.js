@@ -64,8 +64,8 @@ module.exports = {
   processBuffer() {
     if (this.buffer.length > 0) {
       let message = this.buffer.shift();
-      if (message === -1 && this.onEndCallback) this.onEndCallback();
-      else this.sendMessage(message);
+      if (message) this.sendMessage(message);
+      else if (this.onEndCallback) this.onEndCallback();
     }
   },
 
@@ -121,7 +121,7 @@ module.exports = {
     // to ensure that the prev command is executed
     // by the plotter's firmware
     this.addToBuffer('\n');
-    this.addToBuffer(-1);
+    this.addToBuffer(null);
     this.onEndCallback = callback;
     return this;
   },

@@ -117,6 +117,10 @@ module.exports = {
   },
 
   end(callback) {
+    // send a last command before disconnect
+    // to ensure that the prev command is executed
+    // by the plotter's firmware
+    this.addToBuffer('\n');
     this.addToBuffer(-1);
     this.onEndCallback = callback;
     return this;

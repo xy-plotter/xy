@@ -301,16 +301,16 @@ void parseGcode(char * cmd)
   }
 }
 
-void parseCmd(char * cmd)
-{
-  if(cmd[0]=='G'){
-    parseGcode(cmd+1);
-  }else if(cmd[0]=='M'){
-    parseMcode(cmd+1);
-  }else if(cmd[0]=='P'){
-    Serial.print("POS X");Serial.print(curX);Serial.print(" Y");Serial.println(curY);
-  }
+void parseCmd(char * cmd) {
   Serial.println("Command received.");
+  if (cmd[0]=='G') parseGcode(cmd+1);
+  else if (cmd[0]=='M') parseMcode(cmd+1);
+  else if (cmd[0]=='P') {
+    Serial.print("POS X");
+    Serial.print(curX);
+    Serial.print(" Y");
+    Serial.println(curY);
+  }
 }
 
 // local data

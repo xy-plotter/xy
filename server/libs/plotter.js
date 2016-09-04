@@ -16,6 +16,7 @@ module.exports = {
 
   connect(address, baudRate, verbose = false) {
     this.verbose = verbose;
+    this.up = true;
     this.port = new serial(address, {
       baudRate: baudRate,
       parser: serial.parsers.readline('\n'),
@@ -143,7 +144,7 @@ module.exports = {
   },
 
   pen_up(force_motion = false) {
-    if (!this.up ||force_motion) {
+    if (!this.up || force_motion) {
       this.up = true;
       this.pen(0);
     }

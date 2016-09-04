@@ -367,9 +367,9 @@ void setup() {
   Serial.begin(115200);
   initRobotSetup();
   initPosition();
-  servoPen.attach(servopin);
-  delay(100);
   servoPen.write(roboSetup.data.penUpPos);
+  delay(100);
+  servoPen.attach(servopin);
   goHome();
   Serial.println("ready");
 }

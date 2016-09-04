@@ -43,7 +43,13 @@ module.exports = function svg(filePath, _scale) {
       if (path[0] === 'M') {
         points.push(path);
         ppos = [path[1], path[2]];
-      } else if (ppos &&path[0] === 'C') {
+      } else if (path[0] === 'L') {
+        let start = [path[1], path[2]];
+        let end = [path[3], path[4]];
+        points.push(start);
+        points.push(end);
+        ppos = end;
+      } else if (ppos && path[0] === 'C') {
         let start = ppos;
         let c1 = [path[1], path[2]];
         let c2 = [path[3], path[4]];

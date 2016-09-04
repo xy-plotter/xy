@@ -22,7 +22,7 @@
     "extract-svg-path": "^2.1.0",
     "kool-shell": "github:pqml/kool-shell",
     "load-svg": "^1.0.0",
-    "normalize-svg-path": "^0.1.0",
+    "normalize-svg-path": "github:arnaudjuracek/normalize-svg-path",
     "parse-svg-path": "github:arnaudjuracek/parse-svg-path",
     "serialport": "^4.0.1",
     "svgo": "^0.7.0"

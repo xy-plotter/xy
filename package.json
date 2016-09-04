@@ -25,6 +25,7 @@
     "normalize-svg-path": "github:arnaudjuracek/normalize-svg-path",
     "parse-svg-path": "github:arnaudjuracek/parse-svg-path",
     "serialport": "^4.0.1",
+    "simplify-path": "^1.1.0",
     "svgo": "^0.7.0"
   }
 }

@@ -5,6 +5,7 @@ const parse     = require('parse-svg-path');
 const abs       = require('abs-svg-path');
 const normalize = require('normalize-svg-path');
 const bezier    = require('adaptive-bezier-curve');
+const simplify  = require('simplify-path');
 
 
 function sanitize(svgString) {
@@ -12,6 +13,25 @@ function sanitize(svgString) {
   let parsed = parse(extracted);
   let absed = abs(parsed);
   return normalize(absed);
+}
+
+function clean(points, tolerance = 0) {
+  let cleaned = [];
+  let line = [];
+  for (let i = 0; i < points.length; i++) {
+    let point = points[i];
+    if (point[0] === 'M') {
+      if (line.length > 0) {
+        cleaned = cleaned.concat(simplify(line, tolerance));
+        line = [];
+      }
+      cleaned.push(point);
+    }
+    else line.push(point);
+  }
+
+  if (line.length > 0) cleaned = cleaned.concat(simplify(line, tolerance));
+  return cleaned;
 }
 
 module.exports = function svg(filePath, _scale) {
@@ -60,5 +80,5 @@ module.exports = function svg(filePath, _scale) {
       }
     }
   });
-  return points;
+  return clean(points);
 };

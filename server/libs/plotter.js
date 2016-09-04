@@ -2,13 +2,12 @@ const serial  = require('serialport');
 const sh      = require('kool-shell');
 const SVG     = require('./svg');
 
-let data = null;
 let buffer = [];
 const WIDTH = 310;
 const HEIGHT = 380;
 
 module.exports = {
-  data, buffer,
+  buffer,
   WIDTH, HEIGHT,
 
   // -------------------------------------------------------------------------

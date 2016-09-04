@@ -25,7 +25,7 @@ int stepAuxDelay = 0;
 int stepdelay_min = 250;
 int stepdelay_max = 1000;
 
-#define MS_BEFORE_SERVO_SLEEP 100
+#define MS_BEFORE_SERVO_SLEEP 1000
 #define SPEED_STEP 1
 #define WIDTH 310
 #define HEIGHT 380
@@ -274,7 +274,6 @@ void syncRobotSetup() {
 
 char buf[64];
 int8_t bufindex;
-boolean isAsleep = false;
 
 void setup() {
   pinMode(11, OUTPUT);
@@ -299,7 +298,7 @@ void setup() {
 
 void loop() {
   if (Serial.available()) {
-    if (isAsleep) wakeUp();
+    wakeUp();
 
     char c = Serial.read();
     buf[bufindex++] = c;
@@ -310,9 +309,8 @@ void loop() {
       bufindex = 0;
     }
     if(bufindex >= 64) bufindex=0;
-  } else if (!isAsleep) {
-    sleep();
-  }
+
+  } else sleep();
 }
 
 
@@ -321,21 +319,26 @@ void loop() {
 // SERVO SLEEP
 
 int sleep_timer = 0;
+boolean isAsleep = false;
 
 void sleep() {
-  sleep_timer++;
-  delay(100);
-  if (sleep_timer > MS_BEFORE_SERVO_SLEEP) {
-    isAsleep = true;
-    servoPen.detach();
-    Serial.print('good night !');
+  if (!isAsleep) {
+    sleep_timer++;
+    delay(100);
+    if (sleep_timer > MS_BEFORE_SERVO_SLEEP / 100) {
+      isAsleep = true;
+      servoPen.detach();
+      Serial.print('good night !');
+    }
   }
 }
 
 void wakeUp() {
-  sleep_timer = 0;
-  isAsleep = false;
-  servoPen.attach(servopin);
+  if (isAsleep) {
+    sleep_timer = 0;
+    isAsleep = false;
+    servoPen.attach(servopin);
+  }
 }
 
 

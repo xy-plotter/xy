@@ -60,6 +60,16 @@ module.exports = {
   // -------------------------------------------------------------------------
   // COMMUNICATION
 
+  addToBuffer(message) { this.buffer.push(message); },
+
+  processBuffer() {
+    if (this.buffer.length > 0) {
+      let message = this.buffer.shift();
+      if (message === -1 && this.onEndCallback) this.onEndCallback();
+      else this.sendMessage(message);
+    }
+  },
+
   sendMessage(message) {
     if (this.port) {
       this.port.write(`${message}\n`, (err) => {
@@ -69,16 +79,6 @@ module.exports = {
         }
       });
     } else sh.error(new Error('port isn\'t openned.', 'plotter.js'));
-  },
-
-  addToBuffer(message) { this.buffer.push(message); },
-
-  processBuffer() {
-    if (this.buffer.length > 0) {
-      let message = this.buffer.shift();
-      if (message === -1 && this.onEndCallback) this.onEndCallback();
-      else this.sendMessage(message);
-    }
   },
 
   // -------------------------------------------------------------------------

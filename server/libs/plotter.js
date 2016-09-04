@@ -226,7 +226,7 @@ module.exports = {
 
   ellipse(cx, cy, w, h, sides = 100) {
     let points = [];
-    for (let theta = 0; theta <= Math.PI * 2; theta += (Math.PI / sides)) {
+    for (let theta = 0; theta <= Math.PI * 2; theta += ((Math.PI * 2) / sides)) {
       let x = cx + Math.sin(theta) * w;
       let y = cy + Math.cos(theta) * h;
       points.push([x, y]);

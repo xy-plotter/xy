@@ -22,15 +22,17 @@ static union{
 }roboSetup;
 
 int stepAuxDelay = 0;
-int stepdelay_min = 250;
-int stepdelay_max = 1000;
 
 #define MS_BEFORE_SERVO_SLEEP 1000
 #define SPEED_STEP 1
 #define WIDTH 310
 #define HEIGHT 380
 #define STEPS_PER_MM 87.58 // the same as 3d printer
+#define MIN_STEP_DELAY 250
+#define MAX_STEP_DELAY 1000
 
+int stepdelay_min;
+int stepdelay_max;
 int ylimit_pin1 = 12;
 int ylimit_pin2 = 13;
 int xlimit_pin1 = A2;
@@ -160,10 +162,7 @@ void parseRobotSetup(char * cmd) {
     else if (str[0] == 'B') roboSetup.data.motoBDir = atoi(str + 1);
     else if (str[0] == 'H') roboSetup.data.height = atoi(str + 1);
     else if (str[0] == 'W') roboSetup.data.width = atoi(str + 1);
-    else if (str[0] == 'S'){
-      roboSetup.data.speed = atoi(str + 1);
-      // stepdelay_min = atoi(str + 1);
-    }
+    else if (str[0] == 'S') roboSetup.data.speed = atoi(str + 1);
   }
   syncRobotSetup();
 }
@@ -193,6 +192,25 @@ void parsePenPosSetup(char * cmd) {
   syncRobotSetup();
 }
 
+void parseSCode(char * cmd) {
+  int code = atoi(cmd);
+  switch(code){
+    case 0:
+      // reset to non-linear speed
+      stepdelay_min = MIN_STEP_DELAY;
+      stepdelay_max = MAX_STEP_DELAY;
+      break;
+    case 1:
+      // set stepdelay value
+      char * tmp;
+      strtok_r(cmd, " ", &tmp);
+      int value = atoi(tmp);
+      stepdelay_min = value;
+      stepdelay_max = value;
+      break;
+  }
+}
+
 void parseMcode(char * cmd) {
   int code = atoi(cmd);
   switch(code){
@@ -216,8 +234,9 @@ void parseGcode(char * cmd) {
 
 void parseCmd(char * cmd) {
   Serial.println("Command received.");
-  if (cmd[0] == 'G') parseGcode(cmd+1);
-  else if (cmd[0] == 'M') parseMcode(cmd+1);
+  if (cmd[0] == 'G') parseGcode(cmd + 1);
+  else if (cmd[0] == 'M') parseMcode(cmd + 1);
+  else if (cmd[0] == 'S') parseSCode(cmd + 1);
   else if (cmd[0] == 'P') echoPosition();
 }
 
@@ -262,6 +281,9 @@ void initRobotSetup() {
     motorBfw = 1;
     motorBbk = -1;
   }
+
+  stepdelay_min = MIN_STEP_DELAY;
+  stepdelay_max = MAX_STEP_DELAY;
 }
 
 void syncRobotSetup() {

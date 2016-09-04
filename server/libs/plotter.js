@@ -83,8 +83,22 @@ module.exports = {
   // -------------------------------------------------------------------------
   // SETUP COMMANDS
 
-  setSpeed(speed) {
-    this.addToBuffer(`S ${speed}`);
+  setSpeed(speedPercent) {
+    if (speedPercent) {
+      let maxDelay = 1000; // ms
+      let securityMinDelay = 100; // ms
+      if (speedPercent > 1) {
+        sh.warning(`Speed value must be between 0 and 1.`);
+        speedPercent = Math.min(1, speedPercent);
+      }
+      let speed = securityMinDelay + maxDelay - (maxDelay * speedPercent);
+      this.addToBuffer(`S1 ${speed}`);
+    } else this.resetSpeed();
+    return this;
+  },
+
+  resetSpeed() {
+    this.addToBuffer(`S0`);
     return this;
   },
 

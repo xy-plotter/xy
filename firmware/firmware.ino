@@ -23,6 +23,7 @@ static union{
 
 int stepAuxDelay = 0;
 
+#define REQ_NEXT_CMD_CHAR 'N'
 #define MS_BEFORE_SERVO_SLEEP 1000
 #define SPEED_STEP 1
 #define WIDTH 310
@@ -233,13 +234,16 @@ void parseGcode(char * cmd) {
 }
 
 void parseCmd(char * cmd) {
-  Serial.println("Command received.");
+  requestNextCommand();
   if (cmd[0] == 'G') parseGcode(cmd + 1);
   else if (cmd[0] == 'M') parseMcode(cmd + 1);
   else if (cmd[0] == 'S') parseSCode(cmd + 1);
   else if (cmd[0] == 'P') echoPosition();
 }
 
+void requestNextCommand() {
+  Serial.println(REQ_NEXT_CMD_CHAR);
+}
 
 
 // ----------------------------------------
@@ -315,7 +319,7 @@ void setup() {
   servoPen.attach(servopin);
 
   goHome();
-  Serial.println("ready");
+  requestNextCommand();
 }
 
 void loop() {
@@ -350,7 +354,6 @@ void sleep() {
     if (sleep_timer > MS_BEFORE_SERVO_SLEEP / 100) {
       isAsleep = true;
       servoPen.detach();
-      Serial.print('good night !');
     }
   }
 }

@@ -28,8 +28,10 @@ module.exports = {
       });
 
       this.port.on('data', (data) => {
-        if (!this.connected) resolve(data);
-        this.processBuffer();
+        if (data.charAt(0) === 'N') {
+          if (!this.connected) resolve(data);
+          this.processBuffer();
+        }
       });
 
       this.port.on('error', (err) => {

@@ -39,4 +39,4 @@ Thanks to the Python works of [Michael Fogleman](https://github.com/fogleman/xy)
 
 ### License
 
-MIT.
+[MIT](https://tldrlegal.com/license/mit-license).

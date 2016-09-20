@@ -1,6 +1,7 @@
-const serial  = require('serialport');
-const sh      = require('kool-shell');
-const SVG     = require('./svg');
+const serial  =  require('serialport');
+const sh        = require('kool-shell');
+const progress  = require('cli-progress');
+const SVG       = require('./svg');
 
 let buffer = [];
 const WIDTH = 310;
@@ -58,16 +59,37 @@ module.exports = {
     });
   },
 
+  updateProgress(done = false) {
+    if (!this.progressBar) {
+      if (this.connected) {
+        this.progressBar = new progress.Bar({
+          format: '[{bar}] {percentage}% | {duration_formatted} ({eta_formatted})',
+        });
+        this.progressBar.start(100, 0);
+      }
+    } else {
+      if (!this.bufferMaxLength || this.buffer.length > this.bufferMaxLength) this.bufferMaxLength = this.buffer.length;
+      this.bufferIndex = this.bufferIndex + 1 || 0;
+      let v = (this.bufferIndex / this.bufferMaxLength) * 100
+      this.progressBar.update(v);
+      if (done) this.progressBar.stop();
+    }
+  },
+
   // -------------------------------------------------------------------------
   // COMMUNICATION
 
   addToBuffer(message) { this.buffer.push(message); },
 
   processBuffer() {
+    if (!this.verbose) this.updateProgress();
     if (this.buffer.length > 0) {
       let message = this.buffer.shift();
       if (message) this.sendMessage(message);
-      else if (this.onEndCallback) this.onEndCallback();
+      else if (this.onEndCallback) {
+        this.onEndCallback();
+        if (!this.verbose) this.updateProgress(true);
+      }
     }
   },
 

@@ -19,6 +19,7 @@
   "dependencies": {
     "abs-svg-path": "^0.1.1",
     "adaptive-bezier-curve": "^1.0.3",
+    "cli-progress": "^1.2.0",
     "extract-svg-path": "^2.1.0",
     "kool-shell": "github:pqml/kool-shell",
     "load-svg": "^1.0.0",

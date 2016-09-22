@@ -9,7 +9,7 @@ XY
   - faster _home_ command
 - [./server](https://github.com/arnaudjuracek/xy/tree/master/server) : node.js server
   - SVG support
-  - [Processing-like API](https://processing.org/reference/) for 2D primitives (see [usage](#usage) below)
+  - [Processing-like API](https://processing.org/reference/) for 2D primitives (see [API](#API) below)
   - commands chaining for better readability
 
 ## Installation

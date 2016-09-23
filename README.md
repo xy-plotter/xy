@@ -1,6 +1,13 @@
-XY
-===
-🤖✏️ — node.js for makeblock XY plotter v2.0
+<h1 align="center">🤖✏️ XY</h1>
+<h3 align="center">node.js for makeblock XY plotter v2.0</h3>
+
+<div align="center">
+  <!-- License -->
+  <a href="https://raw.githubusercontent.com/arnaudjuracek/xy/master/LICENSE">
+    <img src="https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square" alt="License" />
+  </a>
+</div>
+
 
 ## Features
 - [./firmware](https://github.com/arnaudjuracek/xy/tree/master/firmware) : custom Arduino firmware
@@ -11,6 +18,15 @@ XY
   - SVG support
   - [Processing-like API](https://processing.org/reference/) for 2D primitives (see [API](#api) below)
   - commands chaining for better readability
+
+## Table of contents
+- [Installation](#installation)
+  - [Firmware](#firmware)
+  - [Server](#server)
+- [Usage](#usage)
+- [API](#api)
+- [Credits](#credits)
+- [License](#license)
 
 ## Installation
 
@@ -52,6 +68,39 @@ plotter.end(() => plotter.disconnect());
 
 ## API
 
+###### Environment
+- [`plotter.connect(port, baudrate, verbose = false)`](#plotterconnectport-baudrate-verbose--false)
+- [`plotter.disconnect()`](#plotterdisconnect)
+- [`plotter.sendMessage(message)`](#plottersendmessagemessage)
+- [`plotter.addToBuffer(message)`](#plotteraddtobuffermessage)
+- [`plotter.end(callback)`](#plotterendcallback)
+
+###### Settings
+- [`plotter.setSpeed(percent)`](#plottersetspeedpercent)
+- [`plotter.resetSpeed()`](#plotterresetspeed)
+
+###### Basic movements
+- [`plotter.home()`](#plotterhome)
+- [`plotter.move(x, y)`](#plottermovex-y)
+- [`plotter.pen_up(force_motion = false)`](#plotterpen_upforce_motion--false)
+- [`plotter.pen_down(force_motion = false)`](#plotterpen_downforce_motion--false)
+- [`plotter.pen(position)`](#plotterpenposition)
+- [`plotter.drawBoundaries()`](#plotterdrawboundaries)
+
+###### 2D primitives
+- [`plotter.point(x, y)`](#plotterpointx-y)
+- [`plotter.polygon([[x, y]])`](#plotterpolygonx-y)
+- [`plotter.line(x1, y1, x2, y2)`](#plotterlinex1-y1-x2-y2)
+- [`plotter.ellipse(cx, cy, w, h, sides = 100)`](#plotterellipsecx-cy-w-h-sides--100)
+- [`plotter.circle(cx, cy, r, sides = 100)`](#plottercirclecx-cy-r-sides--100)
+- [`plotter.triangle(x1, y1, x2, y2, x3, y3)`](#plottertrianglex1-y1-x2-y2-x3-y3)
+- [`quad(x1, y1, x2, y2, x3, y3, x4, y4)`](#quadx1-y1-x2-y2-x3-y3-x4-y4)
+- [`rect(x, y, w, h)`](#rectx-y-w-h)
+
+###### Work in progress
+- [`plotter.svg(file, scale)`](#plottersvgfile-scale)
+
+
 ### plotter.connect(port, baudrate, verbose = false)
 Open a serial connection on the specified (the same you use in the Arduino software) with the specified baudrate (this should be `115200` if you use the custom [firmware](https://github.com/arnaudjuracek/xy/tree/master/firmware/firmware.ino)).
 If `verbose` is set to `true`, the TTY will output in realtime the commands sent to the plotter.
@@ -60,15 +109,21 @@ If `verbose` is set to `true`, the TTY will output in realtime the commands sent
 Close the serial connection and return a promise.
 For a more gentle ending, use `plotter.end(() => plotter.disconnect())`
 
+### plotter.sendMessage(message)
+Directly send a message to the plotter via its serial port. Useful if you want to build your own methods without altering the library.
+
+### plotter.addToBuffer(message)
+Add a command to the serial buffer. For mor details on how this buffer works, check the library sources.
+
+### plotter.end(callback)
+Send an ending command to the plotter, then execute a callback.
+
 ### plotter.setSpeed(percent)
 Set the plotter's speed, overriding the default behavior with a linear speed. Accept the a value between `0` and `1`.
 You should be able to fine tune this in the firmware.
 
 ### plotter.resetSpeed()
 Reset the plotter's speed to its default non-linear speed.
-
-### plotter.end(callback)
-Send an ending command to the plotter, then execute a callback.
 
 ### plotter.home()
 Set the plotter's position to its `[0, 0]` home.
@@ -117,14 +172,6 @@ Draw a rectangle from its left corner `[x, y]`, with a width of `w` and an heigh
 
 ### plotter.svg(file, scale)
 **[work in progress]** Draw the specified svg file.
-
-### plotter.sendMessage(message)
-Directly send a message to the plotter via its serial port. Useful if you want to build your own methods without altering the library.
-
-### plotter.addToBuffer(message)
-Add a command to the serial buffer. For mor details on how this buffer works, check the library sources.
-
-
 
 
 ## Credits

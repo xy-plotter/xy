@@ -14,7 +14,7 @@
   - boundaries defined by the plotter's limit switches
   - pen's servo auto-sleep to prevent wear-out
   - faster _home_ command
-- [./server](https://github.com/arnaudjuracek/xy/tree/master/server) : node.js server
+- [./lib](https://github.com/arnaudjuracek/xy/tree/master/lib) : node.js library
   - SVG support
   - [Processing-like API](https://processing.org/reference/) for 2D primitives (see [API](#api) below)
   - commands chaining for better readability
@@ -22,7 +22,7 @@
 ## Table of contents
 - [Installation](#installation)
   - [Firmware](#firmware)
-  - [Server](#server)
+  - [Node](#node)
 - [Usage](#usage)
 - [API](#api)
 - [Credits](#credits)
@@ -39,9 +39,7 @@ _please note that this firmware has not been tested with the official makeblock 
 
 ### Server
 ```sh
-svn export https://github.com/arnaudjuracek/xy/trunk xy
-cd xy
-npm install
+
 ```
 
 ## Usage

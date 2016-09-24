@@ -25,6 +25,8 @@
   - [Node](#node)
   - [Server](#server)
 - [Usage](#usage)
+  - [with a node.js script](#with-a-nodejs-script)
+  - [With the raspberry-pi server](#with-the-raspberry-pi-server)
 - [API](#api)
 - [Credits](#credits)
 - [License](#license)
@@ -44,7 +46,7 @@ npm install --save arnaudjuracek/xy
 ```
 
 ### Server
-Although you can control the plotter using any node.js script on your client computer (see [usage with a node.js script]()), I prefer to use a raspberry-pi server to handle the commands buffer.
+Although you can control the plotter using any node.js script on your client computer (see [usage with a node.js script](#with-a-nodejs-script)), I prefer to use a raspberry-pi server to handle the commands buffer.
 ```sh
 # todo
 ```

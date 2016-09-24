@@ -1,8 +1,8 @@
 {
-  "name": "plotter-server",
+  "name": "xy-plotter",
   "version": "1.2.0",
   "private": true,
-  "description": "a nodejs server to control the makeblock XY plotter v2.0",
+  "description": "control the makeblock XY plotter v2.0",
   "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

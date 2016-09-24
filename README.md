@@ -23,6 +23,7 @@
 - [Installation](#installation)
   - [Firmware](#firmware)
   - [Node](#node)
+  - [Server](#server)
 - [Usage](#usage)
 - [API](#api)
 - [Credits](#credits)
@@ -37,15 +38,23 @@ _please note that this firmware has not been tested with the official makeblock 
 - upload it to your board, making sure you've selected the right port and board (_Leonardo_ or _Uno_ depending of your configuration)
 - if you want to go back to the official firmware, use the [mDrawBot software](https://github.com/Makeblock-official/mDrawBot)
 
-### Server
+### Node
 ```sh
+npm install --save arnaudjuracek/xy
+```
 
+### Server
+Although you can control the plotter using any node.js script on your client computer (see [usage with a node.js script]()), I prefer to use a raspberry-pi server to handle the commands buffer.
+```sh
+# todo
 ```
 
 ## Usage
 
+### With a node.js script
 ```js
-const plotter = require('./libs/plotter');
+// client <-> plotter
+const plotter = require('xy-plotter').Plotter;
 
 // open the serial communication with the plotter
 plotter
@@ -62,6 +71,13 @@ plotter
 
 // send an 'end' command via serial, then disconnect
 plotter.end(() => plotter.disconnect());
+```
+
+### With the raspberry-pi server
+```js
+// client -> server <-> plotter
+// todo
+const plotter = require('xy-plotter').Server;
 ```
 
 ## API

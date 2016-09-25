@@ -1,4 +1,4 @@
-<h1 align="center">🤖✏️ XY</h1>
+<h1 align="center">:electric_plug::pencil2: XY</h1>
 <h3 align="center">node.js for makeblock XY plotter v2.0</h3>
 
 <div align="center">

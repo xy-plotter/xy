@@ -184,7 +184,7 @@ Draw a quadrilateral between the points `[x1, y1]`, `[x2, y2]`, `[x3, y3]` and `
 Shorthand for `plotter.polygon([[x1, y1], [x2, y2], [x3, y3], [x4, y4]])`.
 
 ### rect(x, y, w, h)
-Draw a rectangle from its left corner `[x, y]`, with a width of `w` and an height of `h`.
+Draw a rectangle from its bottom left corner `[x, y]`, with a width of `w` and an height of `h`.
 
 ### plotter.svg(file, scale)
 **[work in progress]** Draw the specified svg file.

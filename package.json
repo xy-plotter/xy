@@ -1,6 +1,6 @@
 {
   "name": "xy-plotter",
-  "version": "1.2.0",
+  "version": "2.2.0",
   "private": true,
   "description": "control the makeblock XY plotter v2.0",
   "main": "lib/index.js",
@@ -20,6 +20,7 @@
   "dependencies": {
     "abs-svg-path": "^0.1.1",
     "adaptive-bezier-curve": "^1.0.3",
+    "canvas": "^1.5.0",
     "cli-progress": "^1.2.0",
     "extract-svg-path": "^2.1.0",
     "kool-shell": "github:pqml/kool-shell",

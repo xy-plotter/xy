@@ -8,7 +8,7 @@
   </a>
 </div>
 
-
+<!-- 
 ## Features
 - [./firmware](https://github.com/arnaudjuracek/xy/tree/master/firmware) : custom Arduino firmware
   - boundaries defined by the plotter's limit switches
@@ -17,7 +17,7 @@
 - [./lib](https://github.com/arnaudjuracek/xy/tree/master/lib) : node.js library
   - SVG support
   - [Processing-like API](https://processing.org/reference/) for 2D primitives (see [API](#api) below)
-  - commands chaining for better readability
+  - commands chaining for better readability -->
 
 ## Table of contents
 - [Installation](#installation)
@@ -53,7 +53,7 @@ Although you can control the plotter using any node.js script on your client com
 
 ## Usage
 
-### With a node.js script
+### With a node./usr/local/bin/nodejs script
 ```js
 // client <-> plotter
 const plotter = require('xy-plotter').Plotter;
@@ -62,7 +62,7 @@ const plotter = require('xy-plotter').Plotter;
 plotter
   .connect('/dev/tty.wchusbserial1410', 115200)
   .catch((err) => {
-    console.log(err);
+   /.vmd/ console.log(err);
     exit(1);
   });
 
@@ -83,7 +83,7 @@ const plotter = require('xy-plotter').Server;
 ```
 
 ## API
-[API reference](wiki/API-Reference)
+[API reference](https://github.com/arnaudjuracek/xy/wiki/API-Reference)
 
 
 ## Credits

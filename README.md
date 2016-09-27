@@ -21,29 +21,34 @@
 
 ## Table of contents
 - [Installation](#installation)
-  - [Firmware](#firmware)
   - [Node](#node)
+  - [Firmware](#firmware)
   - [Server](#server)
 - [Usage](#usage)
-  - [with a node.js script](#with-a-nodejs-script)
+  - [With a node.js script](#with-a-nodejs-script)
   - [With the raspberry-pi server](#with-the-raspberry-pi-server)
 - [API](#api)
+- [Contribute](#contribute)
 - [Credits](#credits)
 - [License](#license)
 
 ## Installation
 
+### Node
+```sh
+npm install --save arnaudjuracek/xy
+```
+<sup>please note that this module has not been tested with the official makeblock firmwares</sup>
+
+
+
 ### Firmware
-_please note that this firmware has not been tested with the official makeblock softwares_
 - download and install the [Arduino Software](https://www.arduino.cc/en/Main/Software)
 - open [./firmware/firmware.ino](https://github.com/arnaudjuracek/xy/tree/master/firmware/firmware.ino)
 - upload it to your board, making sure you've selected the right port and board (_Leonardo_ or _Uno_ depending of your configuration)
 - if you want to go back to the official firmware, use the [mDrawBot software](https://github.com/Makeblock-official/mDrawBot)
 
-### Node
-```sh
-npm install --save arnaudjuracek/xy
-```
+<sup>please note that this firmware has not been tested with the official makeblock softwares</sup>
 
 ### Server
 Although you can control the plotter using any node.js script on your client computer (see [usage with a node.js script](#with-a-nodejs-script)), I prefer to use a raspberry-pi server to handle the commands buffer.
@@ -53,42 +58,54 @@ Although you can control the plotter using any node.js script on your client com
 
 ## Usage
 
-### With a node./usr/local/bin/nodejs script
+### With a node.js script
 ```js
-// client <-> plotter
-const plotter = require('xy-plotter').Plotter;
+var plotter = require('xy-plotter');
+var job = plotter.Job('my-job-name');
 
-// open the serial communication with the plotter
-plotter
-  .connect('/dev/tty.wchusbserial1410', 115200)
-  .catch((err) => {
-   /.vmd/ console.log(err);
-    exit(1);
-  });
+job.rect(10, 10, 100, 100).circle(10, 10, 100);
+job.pen_down().move(100, 100);
 
-// send all your commands
-plotter
-    .rect(10, 10, 100, 100)
-    .circle(10, 10, 100);
-
-// send an 'end' command via serial, then disconnect
-plotter.end(() => plotter.disconnect());
+var serial = plotter.Serial('/dev/tty.wchusbserial1410');
+seria.send(job).then(() => {
+    console.log('the job is done !');
+});
 ```
 
 ### With the raspberry-pi server
 ```js
-// client -> server <-> plotter
 // todo
-const plotter = require('xy-plotter').Server;
 ```
 
+### More
+See [examples](https://github.com/arnaudjuracek/xy/wiki/Examples) for more advanced usages.
+
 ## API
+
 [API reference](https://github.com/arnaudjuracek/xy/wiki/API-Reference)
+
+## Contribute
+
+### Issues 
+Feel free to submit any issue or request.
+
+### Pull Request
+1. **Fork** the repo on GitHub
+2. **Clone** the project to your own machine
+3. **Commit** changes to your own branch
+4. **Push** your work back up to your fork
+5. Submit a **Pull request** so that we I review your changes
+
+<sup>Be sure to merge the latest from "upstream" before making a pull request!</sup>
+
+### Wiki and examples
+Contributions to the [examples](https://github.com/arnaudjuracek/xy/wiki/Examples) are very welcomed !
+
 
 
 ## Credits
 The Arduino firmware is based on [Michael Fogleman](https://github.com/fogleman/xy)'s one. 
-Thanks to the Python works of [Michael Fogleman](https://github.com/fogleman/xy) and [Anders Hoff](https://github.com/inconvergent/) to allow me establish a working communication between the XY and nodejs.
+Thanks to the work in Python of [Michael Fogleman](https://github.com/fogleman/xy) and [Anders Hoff](https://github.com/inconvergent/), which helped me establish a working communication between the XY and nodejs.
 
 ## License
 

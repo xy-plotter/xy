@@ -96,10 +96,10 @@ Feel free to submit any issue or request.
 4. **Push** your work back up to your fork
 5. Submit a **Pull request** so that we I review your changes
 
-<sup>Be sure to merge the latest from "upstream" before making a pull request!</sup>
+<sup>Be sure to merge the latest from "upstream" before making a pull request !</sup>
 
 ### Wiki and examples
-Contributions to the [examples](https://github.com/arnaudjuracek/xy/wiki/Examples) are very welcomed !
+Contributions to the [examples](https://github.com/arnaudjuracek/xy/wiki/Examples) are very welcome !
 
 
 

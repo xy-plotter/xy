@@ -40,6 +40,7 @@ int xlimit_pin1 = A2;
 int xlimit_pin2 = A3;
 int servopin = A1;
 Servo servoPen;
+int servo_position = 90;
 
 float curX, curY, curZ;
 float tarX, tarY, tarZ; // target xyz position
@@ -133,6 +134,18 @@ void goHome() {
 void initPosition() { curX = 0; curY = 0; posA = 0; posB = 0; }
 
 
+// ----------------------------------------
+// SERVO
+
+void servoMove(int tpos) {
+  int d = tpos - servo_position;
+
+  for (int i = 0; servo_position != tpos; i++) {
+    servo_position += (d > 0) ? 1 : -1;
+    servoPen.write(servo_position);
+    delay(15);
+  }
+}
 
 // ----------------------------------------
 // PARSING
@@ -177,8 +190,9 @@ void parseAuxDelay(char * cmd) {
 void parsePen(char * cmd) {
   char * tmp;
   strtok_r(cmd, " ", &tmp);
-  int pos = atoi(tmp);
-  servoPen.write(pos);
+  int tpos = atoi(tmp);
+
+  servoMove(tpos);
 }
 
 void parsePenPosSetup(char * cmd) {
@@ -314,7 +328,7 @@ void setup() {
   initRobotSetup();
   initPosition();
 
-  servoPen.write(roboSetup.data.penUpPos);
+  servoMove(roboSetup.data.penUpPos);
   delay(100);
   servoPen.attach(servopin);
 

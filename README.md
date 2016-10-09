@@ -8,6 +8,9 @@
   </a>
 </div>
 
+<div align="center">
+  <img src="preview.jpg?raw=true">
+</div>
 <!-- 
 ## Features
 - [./firmware](https://github.com/arnaudjuracek/xy/tree/master/firmware) : custom Arduino firmware

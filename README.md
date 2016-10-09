@@ -60,7 +60,7 @@ Although you can control the plotter using any node.js script on your client com
 
 ### With a node.js script
 ```js
-var plotter = require('xy-plotter');
+var plotter = require('xy-plotter')();
 var job = plotter.Job('my-job-name');
 
 job.rect(10, 10, 100, 100).circle(10, 10, 100);

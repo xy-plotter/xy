@@ -9,7 +9,9 @@
 </div>
 
 <div align="center">
-  <img src="preview.jpg?raw=true">
+  <a href="http://www.makeblock.com/xy-plotter-robot-kit/">
+    <img src="preview.jpg?raw=true">
+  </a>
 </div>
 <!-- 
 ## Features

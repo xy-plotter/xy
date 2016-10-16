@@ -1,6 +1,6 @@
 {
   "name": "xy-plotter",
-  "version": "2.3.1",
+  "version": "2.4.0",
   "private": true,
   "description": "control the makeblock XY plotter v2.0",
   "main": "lib/index.js",
@@ -27,6 +27,7 @@
     "kool-shell": "github:pqml/kool-shell",
     "load-svg": "^1.0.0",
     "normalize-svg-path": "github:arnaudjuracek/normalize-svg-path",
+    "opentype.js": "^0.6.5",
     "parse-svg-path": "github:arnaudjuracek/parse-svg-path",
     "serialport": "^4.0.1",
     "simplify-path": "^1.1.0",

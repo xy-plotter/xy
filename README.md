@@ -1,6 +1,10 @@
-<h1 align="center">:electric_plug::pencil2: XY</h1>
+<h1 align="center">XY</h1>
+<div align="center">
+  <a href="http://www.makeblock.com/xy-plotter-robot-kit/">
+    <img src="preview.png?raw=true">
+  </a>
+</div>
 <h3 align="center">node.js for makeblock XY plotter v2.0</h3>
-
 <div align="center">
   <!-- License -->
   <a href="https://raw.githubusercontent.com/arnaudjuracek/xy/master/LICENSE">
@@ -8,11 +12,6 @@
   </a>
 </div>
 
-<div align="center">
-  <a href="http://www.makeblock.com/xy-plotter-robot-kit/">
-    <img src="preview.jpg?raw=true">
-  </a>
-</div>
 <!-- 
 ## Features
 - [./firmware](https://github.com/arnaudjuracek/xy/tree/master/firmware) : custom Arduino firmware
@@ -43,7 +42,7 @@
 ```sh
 npm install --save arnaudjuracek/xy
 ```
-<sup>please note that this module has not been tested with the official makeblock firmwares</sup>
+<sup>Note: this module has not been tested with the official makeblock firmwares</sup>
 
 
 
@@ -53,7 +52,7 @@ npm install --save arnaudjuracek/xy
 - upload it to your board, making sure you've selected the right port and board (_Leonardo_ or _Uno_ depending of your configuration)
 - if you want to go back to the official firmware, use the [mDrawBot software](https://github.com/Makeblock-official/mDrawBot)
 
-<sup>please note that this firmware has not been tested with the official makeblock softwares</sup>
+<sup>Note: this firmware has not been tested with the official makeblock softwares</sup>
 
 ### Server
 Although you can control the plotter using any node.js script on your client computer (see [usage with a node.js script](#with-a-nodejs-script)), I prefer to use a raspberry-pi server to handle the commands buffer.

@@ -1,3 +1,4 @@
+
 <h1 align="center">XY</h1>
 <div align="center">
   <a href="http://www.makeblock.com/xy-plotter-robot-kit/">
@@ -29,8 +30,6 @@
   - [Firmware](#firmware)
   - [Server](#server)
 - [Usage](#usage)
-  - [With a node.js script](#with-a-nodejs-script)
-  - [With the raspberry-pi server](#with-the-raspberry-pi-server)
 - [API](#api)
 - [Contribute](#contribute)
 - [Credits](#credits)
@@ -55,14 +54,11 @@ npm install --save arnaudjuracek/xy
 <sup>Note: this firmware has not been tested with the official makeblock softwares</sup>
 
 ### Server
-Although you can control the plotter using any node.js script on your client computer (see [usage with a node.js script](#with-a-nodejs-script)), I prefer to use a raspberry-pi server to handle the commands buffer.
-```sh
-# todo
-```
+Although you can control the plotter using any node.js script on your client computer (see [usage](#with-a-nodejs-script) below), keeping an open serial connection for several hours can become tedious. That is why I'm using a raspberry pi as a printing server. See [arnaudjuracek/xy-server](https://github.com/arnaudjuracek/xy-server).
 
 ## Usage
 
-### With a node.js script
+###### node.js
 ```js
 var plotter = require('xy-plotter')();
 var job = plotter.Job('my-job-name');
@@ -76,12 +72,7 @@ seria.send(job).then(() => {
 });
 ```
 
-### With the raspberry-pi server
-```js
-// todo
-```
-
-### More
+###### more
 See [examples](https://github.com/arnaudjuracek/xy/wiki/Examples) for more advanced usages.
 
 ## API

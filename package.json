@@ -24,7 +24,7 @@
     "cli-progress": "^1.2.0",
     "extract-svg-path": "^2.1.0",
     "jsonfile": "^2.4.0",
-    "kool-shell": "github:pqml/kool-shell",
+    "kool-shell": "^1.5.0",
     "load-svg": "^1.0.0",
     "normalize-svg-path": "github:arnaudjuracek/normalize-svg-path",
     "opentype.js": "^0.6.5",

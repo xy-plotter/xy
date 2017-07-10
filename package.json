@@ -1,6 +1,6 @@
 {
   "name": "xy-plotter",
-  "version": "2.9",
+  "version": "2.9.0",
   "private": true,
   "description": "control the makeblock XY plotter v2.0",
   "main": "lib/index.js",

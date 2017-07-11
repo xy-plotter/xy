@@ -66,16 +66,18 @@ Although you can control the plotter using any node.js script on your client com
 
 ###### node.js
 ```js
-var plotter = require('xy-plotter')();
-var job = plotter.Job('my-job-name');
+const plotter = require('xy-plotter')()
+const job = plotter.Job('my-job-name')
 
-job.rect(10, 10, 100, 100).circle(10, 10, 100);
-job.pen_down().move(100, 100);
+job.rect(10, 10, 100, 100)
+   .circle(10, 10, 100)
+   .pen_down()
+   .move(100, 100)
 
-var serial = plotter.Serial('/dev/tty.wchusbserial1410');
-seria.send(job).then(() => {
-    console.log('the job is done !');
-});
+const serial = plotter.Serial('/dev/tty.wchusbserial1410')
+serial.send(job).then(() => {
+  console.log('the job is done !')
+})
 ```
 
 ###### more

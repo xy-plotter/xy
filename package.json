@@ -1,6 +1,6 @@
 {
   "name": "xy-plotter",
-  "version": "2.9.0",
+  "version": "2.10.0",
   "private": true,
   "description": "control the makeblock XY plotter v2.0",
   "main": "lib/index.js",
@@ -32,6 +32,7 @@
     "serialport": "^4.0.1",
     "simplify-path": "^1.1.0",
     "socket.io-client": "^1.5.1",
-    "svgo": "^0.7.0"
+    "svgo": "^0.7.0",
+    "tiny-emitter": "^2.0.1"
   }
 }

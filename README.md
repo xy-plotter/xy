@@ -8,7 +8,7 @@
 <h3 align="center">node.js for makeblock XY plotter v2.0</h3>
 <div align="center">
   <!-- Version -->
-  <img alt="version" src="https://img.shields.io/badge/version-2.9-orange.svg?style=flat-square"/>
+  <img alt="version" src="https://img.shields.io/badge/version-2.10.0-orange.svg?style=flat-square"/>
   <!-- Standard -->
   <a href="http://standardjs.com/">
     <img src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square" alt="Standard" />

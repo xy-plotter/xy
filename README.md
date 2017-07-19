@@ -47,6 +47,13 @@
 ```sh
 npm install --save arnaudjuracek/xy
 ```
+
+<sup>Note: `xy` depends on `node-canvas` to export image files. You may encounter some build errors at the installation if you don't have or `node-gyp`, `python 2.7` installed. If so, you might want to checkout this : 
+- [node-canvas installation](https://github.com/Automattic/node-canvas#installation)
+- [node-canvas/OSX install error](https://github.com/Automattic/node-canvas/issues/737)
+- [stackoverflow/node-gyp](https://stackoverflow.com/questions/21365714/nodejs-error-installing-with-npm/21366601#21366601)
+</sup>
+
 <sup>Note: this module has not been tested with the official makeblock firmwares</sup>
 
 

@@ -328,9 +328,8 @@ void setup() {
   initRobotSetup();
   initPosition();
 
-  servoPen.attach(servopin);
-  delay(100);
   servoPen.write(servo_position);
+  servoPen.attach(servopin);
   delay(1000);
 
   goHome();
